@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- rename this file to ".log4j.properties.xml" -->
+<properties>
+	<property name="filename" value="...add path to logfile here..."/>
+	<property name="level" value="...set log level here, for example debug or info..."/>
+</properties>
