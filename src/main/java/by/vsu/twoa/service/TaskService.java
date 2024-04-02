@@ -3,6 +3,7 @@ package by.vsu.twoa.service;
 import by.vsu.twoa.dao.DaoException;
 import by.vsu.twoa.dao.TaskDao;
 import by.vsu.twoa.domain.Task;
+import by.vsu.twoa.service.exception.ServiceException;
 
 import java.util.List;
 

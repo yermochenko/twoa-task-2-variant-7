@@ -34,8 +34,8 @@ abstract public class BaseDao<T extends Entity> {
 		} catch(SQLException e) {
 			throw new DaoException(e);
 		} finally {
-			try { Objects.requireNonNull(resultSet).close(); } catch(SQLException ignored) {}
-			try { Objects.requireNonNull(statement).close(); } catch(SQLException ignored) {}
+			try { Objects.requireNonNull(resultSet).close(); } catch(NullPointerException | SQLException ignored) {}
+			try { Objects.requireNonNull(statement).close(); } catch(NullPointerException | SQLException ignored) {}
 		}
 	}
 

@@ -2,7 +2,7 @@ package by.vsu.twoa.web;
 
 import by.vsu.twoa.config.ServiceFactory;
 import by.vsu.twoa.domain.Task;
-import by.vsu.twoa.service.ServiceException;
+import by.vsu.twoa.service.exception.ServiceException;
 import by.vsu.twoa.service.TaskService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

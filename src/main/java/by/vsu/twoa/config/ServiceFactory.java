@@ -1,7 +1,7 @@
 package by.vsu.twoa.config;
 
 import by.vsu.twoa.dao.TaskDao;
-import by.vsu.twoa.service.ServiceException;
+import by.vsu.twoa.service.exception.ServiceException;
 import by.vsu.twoa.service.TaskService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -34,7 +34,7 @@ public class ServiceFactory implements AutoCloseable {
 	}
 
 	private TaskDao taskDao;
-	public TaskDao getTaskDao() throws ServiceException {
+	private TaskDao getTaskDao() throws ServiceException {
 		if(taskDao == null) {
 			taskDao = new TaskDao();
 			taskDao.setConnection(getConnection());
@@ -43,7 +43,7 @@ public class ServiceFactory implements AutoCloseable {
 	}
 
 	private Connection connection;
-	public Connection getConnection() throws ServiceException {
+	private Connection getConnection() throws ServiceException {
 		if(connection == null) {
 			try {
 				connection = DriverManager.getConnection(jdbcUrl, jdbcUser, jdbcPassword);

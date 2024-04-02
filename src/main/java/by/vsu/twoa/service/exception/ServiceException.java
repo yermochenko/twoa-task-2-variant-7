@@ -1,4 +1,4 @@
-package by.vsu.twoa.service;
+package by.vsu.twoa.service.exception;
 
 public class ServiceException extends Exception {
 	public ServiceException(Throwable cause) {
