@@ -9,6 +9,13 @@
 			<p>${param['error']}</p>
 		</div>
 	</c:if>
+	<c:if test="${not empty param['warn']}">
+		<div class="w3-panel w3-pale-yellow w3-leftbar w3-border-orange">
+			<span onclick="this.parentElement.style.display='none'" class="w3-button w3-right w3-hover-orange">&times;</span>
+			<h3>Предупреждение</h3>
+			<p>${param['warn']}</p>
+		</div>
+	</c:if>
 	<c:url var="url_login_html" value="/login.html"/>
 	<form action="${url_login_html}" method="post" class="w3-container" style="width: 30%; min-width: 500px">
 		<div class="form-element">
