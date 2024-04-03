@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
-@WebFilter({"/task/list.html"})
+@WebFilter({"/task/list.html", "/logout.html"})
 public class AuthorizationFilter extends HttpFilter {
 	@Override
 	protected void doFilter(HttpServletRequest req, HttpServletResponse resp, FilterChain chain) throws ServletException, IOException {
