@@ -26,8 +26,8 @@
 			<label for="password">Пароль:</label>
 			<input type="password" name="password" id="password" class="w3-input w3-border">
 		</div>
-		<button type="submit" class="w3-button w3-green">Войти</button>
+		<button type="submit" class="w3-button w3-green w3-hover-teal">Войти</button>
 		<c:url var="url_register_html" value="/register.html"/>
-		<a href="#" class="w3-button w3-blue">Зарегистрироваться</a>
+		<a href="#" class="w3-button w3-blue w3-hover-indigo">Зарегистрироваться</a>
 	</form>
 </u:page>
