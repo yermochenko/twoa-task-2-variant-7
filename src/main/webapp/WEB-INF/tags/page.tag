@@ -19,7 +19,13 @@
 		<%--@elvariable id="authenticatedUser" type="by.vsu.twoa.domain.User"--%>
 		<c:if test="${not empty authenticatedUser}">
 			<fmt:formatDate var="userBirthday" value="${authenticatedUser.birthday}" pattern="dd.MM.yyyy"/>
-			<button class="w3-right w3-button w3-blue w3-hover-indigo" title="${authenticatedUser.firstName} ${authenticatedUser.middleName} ${authenticatedUser.lastName} (день рождения ${userBirthday})">${authenticatedUser.lastName}&nbsp;${fn:substring(authenticatedUser.firstName, 0, 1)}.&nbsp;${fn:substring(authenticatedUser.firstName, 0, 1)}.</button>
+			<div class="w3-right w3-dropdown-hover">
+				<button class="w3-button w3-blue w3-hover-indigo" title="${authenticatedUser.firstName} ${authenticatedUser.middleName} ${authenticatedUser.lastName} (день рождения ${userBirthday})">${authenticatedUser.lastName}&nbsp;${fn:substring(authenticatedUser.firstName, 0, 1)}.&nbsp;${fn:substring(authenticatedUser.firstName, 0, 1)}.</button>
+				<div class="w3-dropdown-content w3-bar-block">
+					<c:url var="url_logout_html" value="/logout.html"/>
+					<a href="${url_logout_html}" class="w3-bar-item w3-button w3-blue w3-hover-indigo">Выйти</a>
+				</div>
+			</div>
 		</c:if>
 	</header>
 	<article class="w3-container">
