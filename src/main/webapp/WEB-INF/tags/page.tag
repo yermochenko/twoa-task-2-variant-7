@@ -16,6 +16,11 @@
 <body>
 	<header class="w3-container w3-purple">
 		<h1>Вариант 7</h1>
+		<%--@elvariable id="authenticatedUser" type="by.vsu.twoa.domain.User"--%>
+		<c:if test="${not empty authenticatedUser}">
+			<fmt:formatDate var="userBirthday" value="${authenticatedUser.birthday}" pattern="dd.MM.yyyy"/>
+			<button class="w3-right w3-button w3-blue w3-hover-indigo" title="${authenticatedUser.firstName} ${authenticatedUser.middleName} ${authenticatedUser.lastName} (день рождения ${userBirthday})">${authenticatedUser.lastName}&nbsp;${fn:substring(authenticatedUser.firstName, 0, 1)}.&nbsp;${fn:substring(authenticatedUser.firstName, 0, 1)}.</button>
+		</c:if>
 	</header>
 	<article class="w3-container">
 		<h2>${title}</h2>

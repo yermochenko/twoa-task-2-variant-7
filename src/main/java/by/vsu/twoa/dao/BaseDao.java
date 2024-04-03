@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Objects;
+import java.util.Optional;
 
 abstract public class BaseDao<T extends Entity> {
 	private Connection connection;
@@ -47,5 +48,17 @@ abstract public class BaseDao<T extends Entity> {
 
 	protected interface FoundEntityHandler<E extends Entity> {
 		void handleFoundEntity(E entity);
+	}
+
+	protected static class ValueHolder<V> {
+		private V value;
+
+		public void setValue(V value) {
+			this.value = value;
+		}
+
+		public Optional<V> getValue() {
+			return Optional.ofNullable(value);
+		}
 	}
 }
