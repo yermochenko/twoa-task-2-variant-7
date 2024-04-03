@@ -19,7 +19,7 @@ public class TaskListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try(ServiceFactory factory = new ServiceFactory()) {
 			TaskService service = factory.getTaskService();
-			List<Task> tasks = service.findAll();
+			List<Task> tasks = service.findByOwner(1);
 			req.setAttribute("tasks", tasks);
 			req.getRequestDispatcher("/WEB-INF/jsp/task/list.jsp").forward(req, resp);
 		} catch(ServiceException e) {

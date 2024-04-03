@@ -18,6 +18,11 @@ public class UserDao extends BaseDao<User> {
 	}
 
 	@Override
+	protected String select() {
+		return "SELECT \"id\", \"first_name\", \"middle_name\", \"last_name\", \"birthday\", \"login\", \"password\" FROM \"user\" WHERE \"id\" = ?";
+	}
+
+	@Override
 	protected User extractEntity(ResultSet resultSet) throws SQLException {
 		User user = new User();
 		user.setId(resultSet.getInt("id"));

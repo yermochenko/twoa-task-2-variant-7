@@ -31,6 +31,7 @@ public class ServiceFactory implements AutoCloseable {
 		if(taskService == null) {
 			taskService = new TaskService();
 			taskService.setTaskDao(getTaskDao());
+			taskService.setUserDao(getUserDao());
 		}
 		return taskService;
 	}

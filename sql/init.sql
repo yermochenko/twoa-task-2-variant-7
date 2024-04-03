@@ -13,6 +13,7 @@ CREATE TABLE "user" (
 
 CREATE TABLE "task" (
 	"id"       SERIAL PRIMARY KEY,
+	"owner_id" INT    NOT NULL REFERENCES "user" ON UPDATE RESTRICT ON DELETE CASCADE,
 	"name"     TEXT   NOT NULL,
 	"created"  DATE   NOT NULL DEFAULT now()
 );
@@ -25,11 +26,11 @@ INSERT INTO "user"
 SELECT setval('user_id_seq', 1);
 
 INSERT INTO "task"
--------------------------------------------------
-("id", "name"              , "created"   ) VALUES
--------------------------------------------------
-(1   , 'Простой случай'    , '2024-01-10'),
-(2   , 'Тривиальный случай', '2024-01-15'),
-(3   , 'Особый случай'     , '2024-01-13'),
-(4   , 'Усложнённый случай', '2024-01-12');
+-------------------------------------------------------------
+("id", "owner_id", "name"              , "created"   ) VALUES
+-------------------------------------------------------------
+(1   , 1         , 'Простой случай'    , '2024-01-10'),
+(2   , 1         , 'Тривиальный случай', '2024-01-15'),
+(3   , 1         , 'Особый случай'     , '2024-01-13'),
+(4   , 1         , 'Усложнённый случай', '2024-01-12');
 SELECT setval('task_id_seq', 4);

@@ -20,6 +20,12 @@ abstract public class BaseDao<T extends Entity> {
 		this.connection = connection;
 	}
 
+	public Optional<T> read(Integer id) throws DaoException {
+		ValueHolder<T> value = new ValueHolder<>();
+		readWithCriteria(select(), statement -> statement.setInt(1, id), value::setValue);
+		return value.getValue();
+	}
+
 	protected void readWithCriteria(String sql, SearchCriteriaFiller criteria, FoundEntityHandler<T> handler) throws DaoException {
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
@@ -40,6 +46,7 @@ abstract public class BaseDao<T extends Entity> {
 		}
 	}
 
+	abstract protected String select();
 	abstract protected T extractEntity(ResultSet resultSet) throws SQLException;
 
 	protected interface SearchCriteriaFiller {
