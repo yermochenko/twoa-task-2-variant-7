@@ -3,6 +3,18 @@
 	padding-bottom: 16px;
 }
 
+.form {
+	min-width: 800px;
+}
+
 .form-element {
 	padding-bottom: 16px;
+}
+
+.input {
+	width: 50%;
+}
+
+.error-message {
+	vertical-align: middle;
 }

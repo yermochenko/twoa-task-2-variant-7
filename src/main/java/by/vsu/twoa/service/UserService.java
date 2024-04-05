@@ -20,4 +20,13 @@ public class UserService {
 			throw new ServiceException(e);
 		}
 	}
+
+	public void register(User user) throws ServiceException {
+		try {
+			Integer id = userDao.create(user);
+			user.setId(id);
+		} catch(DaoException e) {
+			throw new ServiceException(e);
+		}
+	}
 }

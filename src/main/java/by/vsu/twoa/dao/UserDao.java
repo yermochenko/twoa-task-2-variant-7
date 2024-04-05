@@ -2,8 +2,10 @@ package by.vsu.twoa.dao;
 
 import by.vsu.twoa.domain.User;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.Optional;
 
 public class UserDao extends BaseDao<User> {
@@ -23,6 +25,11 @@ public class UserDao extends BaseDao<User> {
 	}
 
 	@Override
+	protected String insert() {
+		return "INSERT INTO \"user\" (\"first_name\", \"middle_name\", \"last_name\", \"birthday\", \"login\", \"password\") VALUES (?, ?, ?, ?, ?, ?)";
+	}
+
+	@Override
 	protected User extractEntity(ResultSet resultSet) throws SQLException {
 		User user = new User();
 		user.setId(resultSet.getInt("id"));
@@ -33,5 +40,19 @@ public class UserDao extends BaseDao<User> {
 		user.setLogin(resultSet.getString("login"));
 		user.setPassword(resultSet.getString("password"));
 		return user;
+	}
+
+	@Override
+	protected void fillInsertedEntity(PreparedStatement statement, User user) throws SQLException {
+		statement.setString(1, user.getFirstName());
+		if(user.getMiddleName() != null) {
+			statement.setString(2, user.getMiddleName());
+		} else {
+			statement.setNull(2, Types.VARCHAR);
+		}
+		statement.setString(3, user.getLastName());
+		statement.setDate(4, new java.sql.Date(user.getBirthday().getTime()));
+		statement.setString(5, user.getLogin());
+		statement.setString(6, user.getPassword());
 	}
 }

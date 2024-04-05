@@ -28,6 +28,6 @@
 		</div>
 		<button type="submit" class="w3-button w3-green w3-hover-teal">Войти</button>
 		<c:url var="url_register_html" value="/register.html"/>
-		<a href="#" class="w3-button w3-blue w3-hover-indigo">Зарегистрироваться</a>
+		<a href="${url_register_html}" class="w3-button w3-blue w3-hover-indigo">Зарегистрироваться</a>
 	</form>
 </u:page>

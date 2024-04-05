@@ -3,6 +3,7 @@ package by.vsu.twoa.dao;
 import by.vsu.twoa.domain.Task;
 import by.vsu.twoa.domain.User;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -22,6 +23,11 @@ public class TaskDao extends BaseDao<Task> {
 	}
 
 	@Override
+	protected String insert() {
+		return "INSERT INTO \"task\" (\"owner_id\", \"name\") VALUES (?, ?)";
+	}
+
+	@Override
 	protected Task extractEntity(ResultSet resultSet) throws SQLException {
 		Task task = new Task();
 		task.setId(resultSet.getInt("id"));
@@ -30,5 +36,11 @@ public class TaskDao extends BaseDao<Task> {
 		task.setName(resultSet.getString("name"));
 		task.setCreated(new java.util.Date(resultSet.getDate("created").getTime()));
 		return task;
+	}
+
+	@Override
+	protected void fillInsertedEntity(PreparedStatement statement, Task task) throws SQLException {
+		statement.setInt(1, task.getOwner().getId());
+		statement.setString(2, task.getName());
 	}
 }
