@@ -18,3 +18,13 @@
 .error-message {
 	vertical-align: middle;
 }
+
+.math {
+	font-family: "Times New Roman", serif;
+	font-size: 120%;
+}
+
+.line {
+	width: 10px;
+	border-left: 1px dashed black;
+}

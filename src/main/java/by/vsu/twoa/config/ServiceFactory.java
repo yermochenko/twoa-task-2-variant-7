@@ -78,6 +78,10 @@ public class ServiceFactory implements AutoCloseable {
 
 	@Override
 	public void close() {
-		try { connection.close(); } catch(SQLException ignored) {}
+		try {
+			if(connection != null) {
+				connection.close();
+			}
+		} catch(SQLException ignored) {}
 	}
 }
